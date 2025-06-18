@@ -1,129 +1,139 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import {
-  Smartphone,
-  Laptop,
-  Tablet,
+  ArrowRight,
   Headphones,
+  Laptop,
+  Shield,
+  Smartphone,
+  Tablet,
   Wrench,
   Zap,
-  Shield,
-  Clock,
-  Star,
-  ArrowRight,
-  CheckCircle,
 } from "lucide-react";
+import React, { useRef } from "react";
 
 export default function Home() {
-   const { scrollYProgress } = useScroll()
-  const heroRef = useRef(null)
-  const servicesRef = useRef(null)
-  const aboutRef = useRef(null)
-  const processRef = useRef(null)
-  const ctaRef = useRef(null)
+  const { scrollYProgress } = useScroll();
+  const heroRef = useRef(null);
+  const servicesRef = useRef(null);
+  const aboutRef = useRef(null);
+  const processRef = useRef(null);
+  const ctaRef = useRef(null);
 
-  const heroInView = useInView(heroRef, { once: true })
-  const servicesInView = useInView(servicesRef, { once: true, margin: "-100px" })
-  const aboutInView = useInView(aboutRef, { once: true, margin: "-100px" })
-  const processInView = useInView(processRef, { once: true, margin: "-100px" })
-  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" })
+  const heroInView = useInView(heroRef, { once: true });
+  const servicesInView = useInView(servicesRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const aboutInView = useInView(aboutRef, { once: true, margin: "-100px" });
+  const processInView = useInView(processRef, { once: true, margin: "-100px" });
+  const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '200%'])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
 
   interface Service {
-  icon: React.ReactNode
-  title: string
-  description: string
-}
+    icon: React.ReactNode;
+    title: string;
+    description: string;
+  }
 
-interface Feature {
-  icon: React.ReactNode
-  title: string
-  description: string
-}
+  interface Feature {
+    icon: React.ReactNode;
+    title: string;
+    description: string;
+  }
 
-interface ProcessStep {
-  step: string
-  title: string
-  description: string
-}
+  interface ProcessStep {
+    step: string;
+    title: string;
+    description: string;
+  }
 
-  const services = [
+  const services: Service[] = [
     {
       icon: <Smartphone className="w-8 h-8" />,
       title: "Phone Repair",
-      description: "Screen replacements, battery fixes, water damage recovery for all phone models"
+      description:
+        "Screen replacements, battery fixes, water damage recovery for all phone models",
     },
     {
       icon: <Laptop className="w-8 h-8" />,
       title: "Laptop Repair",
-      description: "Hardware diagnostics, software troubleshooting, and component replacements"
+      description:
+        "Hardware diagnostics, software troubleshooting, and component replacements",
     },
     {
       icon: <Tablet className="w-8 h-8" />,
       title: "Tablet Repair",
-      description: "Touch screen repairs, charging port fixes, and software restoration"
+      description:
+        "Touch screen repairs, charging port fixes, and software restoration",
     },
     {
       icon: <Headphones className="w-8 h-8" />,
       title: "Audio Devices",
-      description: "Headphone repairs, speaker fixes, and audio equipment restoration"
-    }
-  ]
+      description:
+        "Headphone repairs, speaker fixes, and audio equipment restoration",
+    },
+  ];
 
-  const features = [
+  const features: Feature[] = [
     {
       icon: <Zap className="w-6 h-6" />,
       title: "Fast Turnaround",
-      description: "Most repairs completed within 24-48 hours"
+      description: "Most repairs completed within 24-48 hours",
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Warranty Guaranteed",
-      description: "90-day warranty on all repairs and parts"
+      description: "90-day warranty on all repairs and parts",
     },
     {
       icon: <Wrench className="w-6 h-6" />,
       title: "Expert Technicians",
-      description: "Certified professionals with 10+ years experience"
-    }
-  ]
+      description: "Certified professionals with 10+ years experience",
+    },
+  ];
 
-  const processSteps = [
+  const processSteps: ProcessStep[] = [
     {
       step: "01",
       title: "Book Online",
-      description: "Schedule your repair appointment through our easy online booking system"
+      description:
+        "Schedule your repair appointment through our easy online booking system",
     },
     {
       step: "02",
       title: "Free Diagnosis",
-      description: "Our experts will diagnose the issue and provide a detailed quote"
+      description:
+        "Our experts will diagnose the issue and provide a detailed quote",
     },
     {
       step: "03",
       title: "Expert Repair",
-      description: "Certified technicians fix your device with premium quality parts"
+      description:
+        "Certified technicians fix your device with premium quality parts",
     },
     {
       step: "04",
       title: "Quality Check",
-      description: "Thorough testing to ensure your device works perfectly"
-    }
-  ]
+      description: "Thorough testing to ensure your device works perfectly",
+    },
+  ];
 
   return (
     <div className="bg-black text-white overflow-hidden">
       {/* Hero Section */}
-      <section ref={heroRef} className="min-h-screen relative flex items-center justify-center">
+      <section
+        ref={heroRef}
+        className="min-h-screen relative flex items-center justify-center"
+      >
         <motion.div
           className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900"
           style={{ y: backgroundY }}
         />
-        
+
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {[...Array(20)].map((_, i) => (
@@ -157,18 +167,19 @@ interface ProcessStep {
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            TechFix Pro
+            FixHub Pro
           </motion.h1>
-          
+
           <motion.p
             className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Premium device repair services with lightning-fast turnaround times and unmatched quality
+            Premium device repair services with lightning-fast turnaround times
+            and unmatched quality
           </motion.p>
-          
+
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
             initial={{ opacity: 0, y: 50 }}
@@ -197,7 +208,10 @@ interface ProcessStep {
       </section>
 
       {/* Services Section */}
-      <section ref={servicesRef} className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <section
+        ref={servicesRef}
+        className="py-20 bg-gradient-to-b from-gray-900 to-black"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -239,7 +253,10 @@ interface ProcessStep {
       </section>
 
       {/* About/Features Section */}
-      <section ref={aboutRef} className="py-20 bg-gradient-to-b from-black to-gray-900">
+      <section
+        ref={aboutRef}
+        className="py-20 bg-gradient-to-b from-black to-gray-900"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -251,9 +268,10 @@ interface ProcessStep {
                 Why Choose Us?
               </h2>
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                With over a decade of experience and thousands of satisfied customers, we're the trusted choice for device repairs.
+                With over a decade of experience and thousands of satisfied
+                customers, we&apos;re the trusted choice for device repairs.
               </p>
-              
+
               <div className="space-y-6">
                 {features.map((feature, index) => (
                   <motion.div
@@ -267,7 +285,9 @@ interface ProcessStep {
                       {feature.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                      <h3 className="text-xl font-semibold mb-2">
+                        {feature.title}
+                      </h3>
                       <p className="text-gray-400">{feature.description}</p>
                     </div>
                   </motion.div>
@@ -281,16 +301,28 @@ interface ProcessStep {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400 mb-2">15K+</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wide">Repairs</div>
+                  <div className="text-3xl font-bold text-orange-400 mb-2">
+                    15K+
+                  </div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wide">
+                    Repairs
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400 mb-2">98%</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wide">Success Rate</div>
+                  <div className="text-3xl font-bold text-orange-400 mb-2">
+                    98%
+                  </div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wide">
+                    Success Rate
+                  </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-400 mb-2">24h</div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wide">Avg Turnaround</div>
+                  <div className="text-3xl font-bold text-orange-400 mb-2">
+                    24h
+                  </div>
+                  <div className="text-sm text-gray-400 uppercase tracking-wide">
+                    Avg Turnaround
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
@@ -312,7 +344,7 @@ interface ProcessStep {
                   transition={{
                     duration: 20,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "linear",
                   }}
                 />
                 <motion.div
@@ -324,7 +356,7 @@ interface ProcessStep {
                   transition={{
                     duration: 15,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 />
                 <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-8 rounded-3xl border border-gray-700/50 backdrop-blur-sm">
@@ -354,7 +386,10 @@ interface ProcessStep {
       </section>
 
       {/* Process Section */}
-      <section ref={processRef} className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <section
+        ref={processRef}
+        className="py-20 bg-gradient-to-b from-gray-900 to-black"
+      >
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -402,9 +437,11 @@ interface ProcessStep {
                     />
                   </motion.div>
                   <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{step.description}</p>
+                  <p className="text-gray-400 leading-relaxed">
+                    {step.description}
+                  </p>
                 </div>
-                
+
                 {/* Connection line */}
                 {index < processSteps.length - 1 && (
                   <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-green-500/50 to-blue-500/50 transform translate-x-4" />
@@ -416,7 +453,10 @@ interface ProcessStep {
       </section>
 
       {/* Final CTA Section */}
-      <section ref={ctaRef} className="py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 relative overflow-hidden">
+      <section
+        ref={ctaRef}
+        className="py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-pink-900 relative overflow-hidden"
+      >
         <div className="absolute inset-0">
           {[...Array(15)].map((_, i) => (
             <motion.div
@@ -448,16 +488,17 @@ interface ProcessStep {
           >
             Ready to Fix Your Device?
           </motion.h2>
-          
+
           <motion.p
             className="text-xl md:text-2xl mb-8 text-gray-300"
             initial={{ opacity: 0, y: 30 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Get your device back to perfect condition with our expert repair services
+            Get your device back to perfect condition with our expert repair
+            services
           </motion.p>
-          
+
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
             initial={{ opacity: 0, y: 30 }}
@@ -482,5 +523,5 @@ interface ProcessStep {
         </div>
       </section>
     </div>
-  )
+  );
 }
