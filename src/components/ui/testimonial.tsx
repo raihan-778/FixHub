@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-export default function TestimonialsSection() {
+const Testimonial = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const sectionRef = useRef(null);
@@ -342,4 +342,6 @@ export default function TestimonialsSection() {
       </div>
     </section>
   );
-}
+};
+
+export default Testimonial;

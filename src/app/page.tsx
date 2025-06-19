@@ -1,5 +1,8 @@
 "use client";
 
+import HeroSection from "@/components/ui/HeroSection";
+import StatsDashboard from "@/components/ui/StatsDashboard";
+import Testimonial from "@/components/ui/Testimonial";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight,
@@ -124,7 +127,8 @@ export default function Home() {
 
   return (
     <div className="bg-black text-white overflow-hidden">
-      {/* Hero Section */}
+      <HeroSection />
+      <Testimonial /> {/* Hero Section */}
       <section
         ref={heroRef}
         className="min-h-screen relative flex items-center justify-center"
@@ -206,7 +210,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-
       {/* Services Section */}
       <section
         ref={servicesRef}
@@ -251,7 +254,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* About/Features Section */}
       <section
         ref={aboutRef}
@@ -384,7 +386,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Process Section */}
       <section
         ref={processRef}
@@ -451,7 +452,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Final CTA Section */}
       <section
         ref={ctaRef}
@@ -724,7 +724,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
       {/* 3D Device Showcase Section */}
       <section className="py-20 bg-gradient-to-b from-gray-900 via-black to-purple-900/20 relative overflow-hidden">
         {/* Particle Background */}
@@ -1489,6 +1488,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      <StatsDashboard />
     </div>
   );
 }

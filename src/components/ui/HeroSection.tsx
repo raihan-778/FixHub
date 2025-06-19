@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView, useMotionValue, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   ArrowRight,
-  Smartphone,
-  Laptop,
-  Tablet,
-  Headphones,
-  Play,
-  Zap,
-  Shield,
   Clock,
+  Headphones,
+  Laptop,
+  Play,
+  Shield,
+  Smartphone,
+  Tablet,
+  Zap,
 } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function EnhancedHeroSection() {
+export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [currentService, setCurrentService] = useState(0);
   const heroRef = useRef(null);
